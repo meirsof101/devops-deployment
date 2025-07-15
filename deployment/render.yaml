@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: mern-app-backend
+    env: node
+    plan: free
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: mern-app-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        value: https://your-frontend-url.vercel.app
+      - key: SENTRY_DSN
+        value: your-sentry-dsn-here
+
+databases:
+  - name: mern-app-db
+    plan: free
