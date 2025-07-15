@@ -13,3 +13,9 @@
 {"level":"info","message":"Server running on port 5001 in development mode","service":"mern-app-server","timestamp":"2025-07-15 13:12:12"}
 {"level":"info","message":"User logged in: fidelmwaro@gmail.com","service":"mern-app-server","timestamp":"2025-07-15 13:17:48"}
 {"level":"info","message":"SIGINT received, shutting down gracefully","service":"mern-app-server","timestamp":"2025-07-15 13:21:10"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"mern-app-server","timestamp":"2025-07-15 11:49:38"}
+{"level":"error","message":"Registration error: \"expiresIn\" should be a number of seconds or string representing a timespan","service":"mern-app-server","stack":"Error: \"expiresIn\" should be a number of seconds or string representing a timespan\n    at /workspace/server/node_modules/jsonwebtoken/sign.js:56:15\n    at Array.forEach (<anonymous>)\n    at validate (/workspace/server/node_modules/jsonwebtoken/sign.js:47:6)\n    at validateOptions (/workspace/server/node_modules/jsonwebtoken/sign.js:62:10)\n    at module.exports [as sign] (/workspace/server/node_modules/jsonwebtoken/sign.js:171:5)\n    at userSchema.methods.getSignedJwtToken (/workspace/server/src/models/User.js:65:14)\n    at /workspace/server/src/routes/auth.js:55:24\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-07-15 11:49:50"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"mern-app-server","timestamp":"2025-07-15 11:50:26"}
+{"level":"info","message":"Server running on port 5000 in development mode","service":"mern-app-server","timestamp":"2025-07-15 11:50:28"}
+{"level":"info","message":"User registered: newuser@example.com","service":"mern-app-server","timestamp":"2025-07-15 11:51:02"}
+{"level":"info","message":"User logged in: newuser@example.com","service":"mern-app-server","timestamp":"2025-07-15 11:51:03"}
