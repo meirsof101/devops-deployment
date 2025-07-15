@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: mern-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: mern-app
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - mern-network
+
+  backend:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    container_name: mern-backend
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/mern-app?authSource=admin
+      JWT_SECRET: your-jwt-secret-change-in-production
+      SESSION_SECRET: your-session-secret-change-in-production
+      CLIENT_URL: http://localhost:3000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    networks:
+      - mern-network
+    volumes:
+      - ../server/logs:/app/logs
+
+  frontend:
+    build:
+      context: ../client
+      dockerfile: Dockerfile
+    container_name: mern-frontend
+    restart: always
+    environment:
+      VITE_API_URL: http://localhost:5000/api
+      VITE_APP_NAME: MERN Task Manager
+      VITE_APP_VERSION: 1.0.0
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - mern-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: mern-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - mern-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  mern-network:
+    driver: bridge
