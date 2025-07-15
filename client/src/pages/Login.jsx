@@ -113,7 +113,7 @@ const Login = () => {
          {error && (
             <div className="rounded-md bg-red-50 p-4">
               <div className="text-sm text-red-700">
-                {typeof error === 'string' ? error : error.message || 'An error occurred'}
+                {typeof error === 'string' ? error : String(error?.message || 'An error occurred')}
               </div>
             </div>
           )}
