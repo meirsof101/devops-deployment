@@ -42,9 +42,9 @@ A production-ready MERN (MongoDB, Express.js, React, Node.js) stack application 
 
 ## 🚦 Live Demo
 
-- **Frontend**: [https://your-app.vercel.app](https://your-app.vercel.app)
-- **Backend API**: [https://your-api.onrender.com](https://your-api.onrender.com)
-- **API Documentation**: [https://your-api.onrender.com/api](https://your-api.onrender.com/api)
+- **Frontend**: https://devops-deployment.vercel.app/
+- **Backend API**: https://devops-deployment.onrender.com
+
 
 ## 🏗️ Architecture
 
