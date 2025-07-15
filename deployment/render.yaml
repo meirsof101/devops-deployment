@@ -20,7 +20,7 @@ services:
       - key: SESSION_SECRET
         generateValue: true
       - key: CLIENT_URL
-        value: https://your-frontend-url.vercel.app
+        value: https://devops-deployment.vercel.app/
       - key: SENTRY_DSN
         value: your-sentry-dsn-here
 
