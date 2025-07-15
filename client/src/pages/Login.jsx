@@ -110,11 +110,14 @@ const Login = () => {
             </div>
           </div>
 
-          {error && (
+         {error && (
             <div className="rounded-md bg-red-50 p-4">
-              <div className="text-sm text-red-700">{error}</div>
+              <div className="text-sm text-red-700">
+                {typeof error === 'string' ? error : error.message || 'An error occurred'}
+              </div>
             </div>
           )}
+
 
           <div>
             <button

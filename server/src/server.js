@@ -64,6 +64,7 @@ const corsOptions = {
       process.env.CLIENT_URL,
       'http://localhost:3000',
       'http://localhost:3001',
+      'http://localhost:3002',
     ].filter(Boolean);
     
     if (!origin || allowedOrigins.includes(origin)) {
