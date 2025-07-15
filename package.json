@@ -8,7 +8,7 @@
     "start": "npm run server:start",
     "server:dev": "cd server && npm run dev",
     "server:start": "cd server && npm start",
-    "client:dev": "cd client && npm start",
+    "client:dev": "cd client && npm run dev",
     "client:build": "cd client && npm run build",
     "server:build": "cd server && npm run build",
     "build": "npm run client:build && npm run server:build",

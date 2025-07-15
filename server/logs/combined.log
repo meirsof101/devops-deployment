@@ -1,0 +1,5 @@
+{"level":"info","message":"Server running on port 5000 in development mode","service":"mern-app-server","timestamp":"2025-07-15 11:35:23"}
+{"level":"info","message":"Server running on port 5001 in development mode","service":"mern-app-server","timestamp":"2025-07-15 11:36:56"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"mern-app-server","timestamp":"2025-07-15 11:38:18"}
+{"level":"info","message":"Server running on port 5001 in development mode","service":"mern-app-server","timestamp":"2025-07-15 11:38:45"}
+{"level":"info","message":"User registered: fidelmwaro@gmail.com","service":"mern-app-server","timestamp":"2025-07-15 11:40:13"}

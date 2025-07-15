@@ -11,7 +11,7 @@ require('dotenv').config();
 
 // Import utilities
 const logger = require('./utils/logger');
-const { connectDB } = require('./config/database');
+const connectDB = require('./config/database');
 const errorHandler = require('./middleware/errorHandler');
 
 // Import routes
