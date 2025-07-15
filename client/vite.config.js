@@ -8,9 +8,9 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: 'https://devops-deployment.onrender.com',
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   },
