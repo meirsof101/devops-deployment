@@ -36,9 +36,11 @@
     "jsdom": "^23.0.1",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
+    "terser": "^5.43.1",
     "vite": "^5.0.8",
     "vitest": "^1.0.4"
   },
+  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -49,6 +51,7 @@
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage"
   },
+  "type": "module",
   "browserslist": {
     "production": [
       ">0.2%",
