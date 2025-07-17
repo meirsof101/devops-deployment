@@ -105,7 +105,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Login failed'
         state.isAuthenticated = false
       })
       // Register
@@ -122,7 +122,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Registration failed'
         state.isAuthenticated = false
       })
       // Get current user
@@ -136,7 +136,7 @@ const authSlice = createSlice({
       })
       .addCase(getCurrentUser.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to get user data'
         state.isAuthenticated = false
         state.token = null
         localStorage.removeItem('token')
@@ -151,7 +151,7 @@ const authSlice = createSlice({
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Profile update failed'
       })
   },
 })

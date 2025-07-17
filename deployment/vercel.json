@@ -7,16 +7,12 @@
   "installCommand": "cd client && npm install",
   "devCommand": "cd client && npm run dev",
   "env": {
-    "VITE_API_URL": "https://devops-deployment.onrender.com",
+    "VITE_API_URL": "https://devops-deployment.onrender.com/api",
     "VITE_SENTRY_DSN": "your-sentry-dsn-here",
     "VITE_APP_NAME": "MERN Task Manager",
     "VITE_APP_VERSION": "1.0.0"
   },
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "https://devops-deployment.onrender.com"
-    },
     {
       "src": "/(.*)",
       "dest": "/index.html"

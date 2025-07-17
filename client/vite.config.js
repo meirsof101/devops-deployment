@@ -6,13 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'https://devops-deployment.onrender.com',
-        changeOrigin: true,
-        secure: true,
-      },
-    },
   },
   build: {
     outDir: 'dist',
