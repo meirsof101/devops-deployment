@@ -59,12 +59,11 @@ app.use('/api/', limiter);
 
 // CORS configuration
 const corsOptions = {
-  origin: {
-    
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'https://devops-deployment.vercel.app'
-  },
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://devops-deployment.vercel.app'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
