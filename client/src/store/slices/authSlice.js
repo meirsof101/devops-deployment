@@ -7,10 +7,14 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
+      console.log('Making login request to API...');
       const response = await authAPI.login(credentials)
+      console.log('Login response:', response);
       toast.success('Login successful!')
       return response.data
     } catch (error) {
+      console.error('Login error:', error);
+      console.error('Error response:', error.response);
       const message = error.response?.data?.error || 'Login failed'
       toast.error(message)
       return rejectWithValue(message)
@@ -105,7 +109,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Login failed'
         state.isAuthenticated = false
       })
       // Register
@@ -122,7 +126,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Registration failed'
         state.isAuthenticated = false
       })
       // Get current user
@@ -136,7 +140,7 @@ const authSlice = createSlice({
       })
       .addCase(getCurrentUser.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to get user data'
         state.isAuthenticated = false
         state.token = null
         localStorage.removeItem('token')
@@ -151,7 +155,7 @@ const authSlice = createSlice({
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Profile update failed'
       })
   },
 })

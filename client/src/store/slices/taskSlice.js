@@ -134,7 +134,7 @@ const taskSlice = createSlice({
       })
       .addCase(fetchTasks.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to fetch tasks'
       })
       // Create task
       .addCase(createTask.pending, (state) => {
@@ -147,7 +147,7 @@ const taskSlice = createSlice({
       })
       .addCase(createTask.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to create task'
       })
       // Update task
       .addCase(updateTask.pending, (state) => {
@@ -160,7 +160,7 @@ const taskSlice = createSlice({
         }
       })
       .addCase(updateTask.rejected, (state, action) => {
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to update task'
       })
       // Delete task
       .addCase(deleteTask.pending, (state) => {
@@ -170,7 +170,7 @@ const taskSlice = createSlice({
         state.tasks = state.tasks.filter(task => task._id !== action.payload)
       })
       .addCase(deleteTask.rejected, (state, action) => {
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to delete task'
       })
       // Fetch task stats
       .addCase(fetchTaskStats.pending, (state) => {
@@ -180,7 +180,7 @@ const taskSlice = createSlice({
         state.stats = action.payload.data
       })
       .addCase(fetchTaskStats.rejected, (state, action) => {
-        state.error = action.payload
+        state.error = typeof action.payload === 'string' ? action.payload : 'Failed to fetch task stats'
       })
   },
 })
