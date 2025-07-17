@@ -4,6 +4,8 @@ import { toast } from 'react-hot-toast'
 // Create axios instance
 const api = axios.create({
   baseURL: 'https://devops-deployment.onrender.com/api',
+  // baseURL: 'http://localhost:5005/api',
+
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
