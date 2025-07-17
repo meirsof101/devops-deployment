@@ -59,27 +59,15 @@ app.use('/api/', limiter);
 
 // CORS configuration
 const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      process.env.CLIENT_URL,
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'https://devops-deployment.vercel.app',
-      'https://devops-deployment.vercel.app/',
-    ].filter(Boolean);
-    
-    // Allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log('CORS blocked origin:', origin);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    'https://devops-deployment.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:3001'
+  ],
   credentials: true,
-  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
@@ -118,6 +106,16 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     status: 'running',
     environment: process.env.NODE_ENV,
+  });
+});
+
+// Debug endpoint to test CORS
+app.get('/api/debug', (req, res) => {
+  res.json({
+    message: 'Debug endpoint working',
+    origin: req.headers.origin,
+    userAgent: req.headers['user-agent'],
+    timestamp: new Date().toISOString()
   });
 });
 

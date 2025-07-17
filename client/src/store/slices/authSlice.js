@@ -7,10 +7,14 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
+      console.log('Making login request to API...');
       const response = await authAPI.login(credentials)
+      console.log('Login response:', response);
       toast.success('Login successful!')
       return response.data
     } catch (error) {
+      console.error('Login error:', error);
+      console.error('Error response:', error.response);
       const message = error.response?.data?.error || 'Login failed'
       toast.error(message)
       return rejectWithValue(message)
