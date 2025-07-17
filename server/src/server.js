@@ -65,7 +65,7 @@ const corsOptions = {
       'http://localhost:3000',
       'http://localhost:3001',
       'https://devops-deployment.vercel.app',
-      'https://your-vercel-app.vercel.app', // Replace with your actual Vercel URL
+      'https://devops-deployment.vercel.app/',
     ].filter(Boolean);
     
     // Allow requests with no origin (mobile apps, curl, etc.)
@@ -75,7 +75,7 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.log('CORS blocked origin:', origin);
-      callback(null, true); // Temporarily allow all origins for debugging
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
